@@ -1,0 +1,73 @@
+<!--
+ * @Description: 
+ * @Autor: lihaiyuan
+ * @Email: lihaiyuan@goldenfintech.com.cn
+ * @Date: 2020-02-07 22:59:16
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Demo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <my-div></my-div>
+    <cpn2></cpn2>
+  </div>
+  <script src="../../assets/vue.js">
+
+  </script>
+  <script>
+    const cpnC = Vue.extend({
+      template: `
+     <div>
+        <h2>我是标题1</h2>
+        <h2>我是内容1</h2>
+    </div>
+     `
+    })
+    const cpn2 = Vue.extend({
+      template: `
+     <div>
+        <h2>我是标题2</h2>
+        <h2>我是内容2</h2>
+    </div>
+     `
+    })
+    //cpnC 直接写在里面
+    Vue.component('my-div', {
+      template: `
+     <div>
+        <h2>我是标题1</h2>
+        <h2>我是内容1</h2>
+    </div>
+     `
+    })
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello'
+      },
+      //把cpn2直接写在里面
+      components: {
+        cpn2: {
+          template: `
+     <div>
+        <h2>我是标题2</h2>
+        <h2>我是内容2</h2>
+    </div>
+     `
+        }
+      }
+    })
+
+  </script>
+</body>
+
+</html>
