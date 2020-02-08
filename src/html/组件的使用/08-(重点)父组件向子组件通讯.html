@@ -1,0 +1,86 @@
+<!--
+ * @Description: 
+ * @Autor: lihaiyuan
+ * @Email: lihaiyuan@goldenfintech.com.cn
+ * @Date: 2020-02-08 16:30:39
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Demo</title>
+  <script src="../../assets/vue.js">
+  </script>
+</head>
+
+<body>
+
+  <div id="app">
+    <!-- 将vue实例中的数据传递给子组件 movies message为父组件定义的变量-->
+    <!--  cmovies cmessage为子组件定义的变量 -->
+    <!-- props父组件向子组件传递参数 -->
+    <cpn :cmovies="movies" :cmessage="message"></cpn>
+  </div>
+  <template id="npm1">
+    <div>
+      <ul>
+        <li v-for="item in cmovies">{{item}}</li>
+      </ul>
+      <p>
+        {{cmessage}}
+      </p>
+    </div>
+  </template>
+  <script>
+    const cpn = {
+      template: '#npm1',
+      // 写法1 这样cmovies cmessage就会有数据，没有限制类型
+      //   props: ['cmovies', 'cmessage'],    
+
+      /* 写法2，传递变量的同时限制类型 
+       props:{
+        cmovies : Array
+      },  */
+      /* props支持的类型：String Number Boolean Array Object Date Function Symbol */
+
+      /* 写法3 提供默认值比如：*/
+      props: {
+        cmessage: {
+          type: String,
+          default: '123',
+          required: true
+        },
+        cmovies: { //类型是对象或数组时，默认值必须是个函数，有返回值
+          type: Array,
+          //   default: [], //vue在2.5.1以下不会报错，网上版本会报错
+          default () {
+            return [];
+          },
+          required: [] //required必须传值
+        }
+      },
+      data: {
+        return: {}
+
+      }
+    }
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '我是内容我是内容我是内容我是内容我是内容我是内容',
+        movies: ['我是歌手', '天天向上', '蒙面唱将']
+      },
+      /* 增强写法 cpn */
+      /* es5写法 cpn:cpn */
+      components: {
+        cpn
+      }
+    })
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!--
+ * @Description: 
+ * @Autor: lihaiyuan
+ * @Email: lihaiyuan@goldenfintech.com.cn
+ * @Date: 2020-02-08 17:32:43
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Demo</title>
+  <script src="../../assets/vue.js">
+  </script>
+</head>
+
+<body>
+
+  <div id="app">
+      <!-- 如果在组件中有驼峰命名的请用 -分开写 cInfo->c-info  不然不识别-->
+    <npm :c-info="info"></npm>
+  </div>
+  <template id="cpn">
+    <div>
+        {{cInfo.name}}
+    </div>
+
+  </template>
+  <script>
+    const npm = {
+      template: '#cpn',
+      /* 一般用对象 */
+      props: {
+        cInfo: {
+          type: Object,
+          default () {
+            return {} //默认返回空object
+          }
+        }
+
+      }
+
+    }
+    const app = new Vue({
+      el: '#app',
+      data: {
+        info: {
+          name: 'lhy',
+          age: 19,
+          height: 180
+        }
+      },
+      components: {
+        npm: npm
+      }
+    })
+
+  </script>
+</body>
+
+</html>

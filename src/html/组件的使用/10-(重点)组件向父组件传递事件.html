@@ -1,0 +1,78 @@
+<!--
+ * @Description: 
+ * @Autor: lihaiyuan
+ * @Email: lihaiyuan@goldenfintech.com.cn
+ * @Date: 2020-02-08 17:54:32
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Demo</title>
+  <script src="../../assets/vue.js">
+  </script>
+</head>
+
+<body>
+<!-- 父组件模本 -->
+  <div id="app">
+    <!-- itemclick 这里是子组件发射出来的，父组件来接受 -->
+    <!-- 这里不需要再onlick（item）这样会报错，会自动帮我们传递过去 -->
+    <cpn @itemclick="onlick"></cpn>
+  </div>
+  <!-- 子组件模板 -->
+  <template id="cpn">
+    <div>
+      <button v-for="item in categrories" @click="btnclick(item)">{{item.name}}</button>
+    </div>
+
+  </template>
+  <script>
+    const cpn1 = {
+      template: '#cpn',
+      data() {
+        return {
+          categrories: [{
+              id: 1,
+              name: '热门推荐'
+            },
+            {
+              id: 2,
+              name: '手机数码'
+            },
+            {
+              id: 3,
+              name: '家用家电'
+            }
+          ]
+        }
+      },
+      methods: {
+        btnclick(item) {
+          // 子组件发射信息itemclick 父组件接受它 item为带参数发射
+          this.$emit('itemclick',item);
+
+        }
+      }
+
+    }
+    const app = new Vue({
+      el: '#app',
+      data: {},
+      methods: {
+        onlick(item) {
+            console.log('onlick',item);
+        }
+      },
+      components: {
+        cpn: cpn1
+      }
+    })
+
+  </script>
+</body>
+
+</html>
