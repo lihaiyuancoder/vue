@@ -1,0 +1,62 @@
+<!--
+ * @Description: 
+ * @Autor: lihaiyuan
+ * @Email: lihaiyuan@goldenfintech.com.cn
+ * @Date: 2020-02-08 14:25:21
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Demo</title>
+  <script src="../../assets/vue.js"></script>
+</head>
+
+<body>
+  <!-- 计数器实现 -->
+  <div id="app">
+    <npm1></npm1>
+  </div>
+  <template id="cpn">
+    <div>
+      <h2>当前计数：{{counter}}</h2>
+      <button @click="increment">+</button>
+      <button @click="decrenment">-</button>
+    </div>
+
+  </template>
+ 
+  <script>
+    Vue.component('npm1', {
+      template: '#cpn',
+      data() {
+        return {
+          counter: 0
+        }
+      },
+      methods: {
+        increment() {
+            console.log(123);
+          this.counter++
+        },
+        decrenment() {
+            console.log(456);
+          this.counter--
+        }
+      }
+
+    })
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello'
+      }
+    })
+
+  </script>
+</body>
+
+</html>
