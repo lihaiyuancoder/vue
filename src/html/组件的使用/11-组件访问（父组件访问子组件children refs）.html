@@ -1,0 +1,70 @@
+<!--
+ * @Description: 
+ * @Autor: lihaiyuan
+ * @Email: lihaiyuan@goldenfintech.com.cn
+ * @Date: 2020-02-09 10:13:08
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Demo</title>
+  <script src="../../assets/vue.js">
+  </script>
+</head>
+
+<body>
+
+  <div id="app">
+    <cpn></cpn>
+    <cpn ref="ref1"></cpn>
+    <button @click="btnclick">按钮</button>
+  </div>
+  <template id="cpn">
+    <div>
+      我是子组件
+    </div>
+  </template>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello'
+      },
+      methods: {
+        btnclick() {
+          console.log(this.$children);
+          console.log(this.$refs.ref1.name);
+          
+
+        }
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+          methods: {
+            showMessage() {
+              console.log('messsage')
+
+            },
+            btnclick() {
+              console.log(123);
+
+
+            }
+
+
+          }
+        }
+
+
+      }
+    })
+
+  </script>
+</body>
+
+</html>

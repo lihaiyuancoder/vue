@@ -1,0 +1,57 @@
+<!--
+ * @Description: 
+ * @Autor: lihaiyuan
+ * @Email: lihaiyuan@goldenfintech.com.cn
+ * @Date: 2020-02-09 12:07:38
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Demo</title>
+  <script src="../../assets/vue.js">
+  </script>
+</head>
+
+<body>
+
+  <div id="app">
+      <!-- 插槽可以根据具体的name指定修改元素 -->
+    <cpn><button slot="left">返回</button></cpn>
+    <cpn><span slot="center">标题</span></cpn>
+    <cpn><button slot="right">...</button></cpn>
+    <!-- 三个导航元素都改变 -->
+    <cpn>
+        <button slot="left">返回</button>
+        <span slot="center">标题</span>
+        <button slot="right">...</button>
+    </cpn>
+  </div>
+  <template id="cpn">
+      <div>
+          <!-- 将导航栏定义为三个插槽，灵活引用插槽 -->
+          <slot name="left">左边</slot>
+          <slot name="center">中间</slot>
+          <slot name="right">右边</slot>
+      </div>
+  </template>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello'
+      },
+      components:{
+          cpn:{
+              template:'#cpn'
+          }
+      }
+    })
+
+  </script>
+</body>
+
+</html>

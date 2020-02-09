@@ -1,0 +1,65 @@
+<!--
+ * @Description: 
+ * @Autor: lihaiyuan
+ * @Email: lihaiyuan@goldenfintech.com.cn
+ * @Date: 2020-02-09 12:58:02
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Demo</title>
+  <script src="../../assets/vue.js">
+  </script>
+</head>
+
+<body>
+
+  <div id="app">
+    <!-- 直接引用子组件展示 -->
+    <cpn></cpn>
+    <cpn>
+      <!-- 在2.5。一下的版本需要用 template组件，以上版本可以用任意组件-->
+      <!-- slot-scope 获取slot中拿到的数据  slots 为随意命名，只是个变量-->
+      <template slot-scope='slots'>
+         <!-- <span v-for="item in slots.lists">{{item}}</span> -->
+         <!-- 用-分割开显示 -->
+        <span >{{slots.lists.join('-')}}</span>
+      </template>
+    </cpn>
+  </div>
+  <template id="cpn">
+    <div>
+        <!-- 获取子组件中的数据 lists可以随意命名 -->
+      <slot :lists="list">
+        <ul>
+          <li v-for="item in list">{{item}}</li>
+        </ul>
+      </slot>
+    </div>
+  </template>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello'
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+          data() {
+            return {
+              list: ['Java', 'c++', 'c#', 'python']
+            }
+          }
+        }
+      }
+    })
+
+  </script>
+</body>
+
+</html>

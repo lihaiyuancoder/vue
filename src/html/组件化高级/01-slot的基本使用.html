@@ -1,0 +1,70 @@
+<!--
+ * @Description: 插槽，使用很方便
+ * @Autor: lihaiyuan
+ * @Email: lihaiyuan@goldenfintech.com.cn
+ * @Date: 2020-02-09 11:41:00
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Demo</title>
+  <script src="../../assets/vue.js">
+  </script>
+</head>
+
+<body>
+
+  <!-- 
+        1、插槽的基本使用，<slot></slot>
+        2、插槽的默认值 <slot><button>默认会在插槽中显示</button></slot>
+        3、如过有替换的话，会替换所有的默认标签
+         <cpn>
+            <span>标题</span>
+            <span>标题</span>
+            <button>点击</button> 
+         </cpn>
+         这样会替换掉<slot>替换掉这里所有的标签</slot>
+         最终会是
+         <slot>
+             <span>标题</span>
+            <span>标题</span>
+            <button>点击</button> 
+         </slot>
+         但是实际中不会显示<slot>标签了，类似于占位
+     -->
+  <div id="app">
+    <cpn></cpn>
+    <cpn><span>标题</span></cpn>
+  </div>
+  <template id="cpn">
+    <div>
+      <h2>我是组件</h2>
+      <!-- 可以默认插入一个标签，如果上面组件插入标签则次button会被替换掉 -->
+      <slot><button>内容</button></slot>
+      <p>我是组件，哈哈哈</p>
+
+    </div>
+  </template>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello'
+      },
+      components: {
+        cpn: {
+          template: '#cpn'
+
+        }
+
+      }
+    })
+
+  </script>
+</body>
+
+</html>

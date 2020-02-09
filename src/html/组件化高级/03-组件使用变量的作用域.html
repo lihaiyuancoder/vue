@@ -1,0 +1,51 @@
+<!--
+ * @Description: 
+ * @Autor: lihaiyuan
+ * @Email: lihaiyuan@goldenfintech.com.cn
+ * @Date: 2020-02-09 12:29:36
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Demo</title>
+  <script src="../../assets/vue.js">
+  </script>
+</head>
+
+<body>
+
+  <div id="app">
+      <!-- 组件中使用的变量，是用全局组件的isshaw而不是用组件中定义的isShow -->
+    <cpn v-show="isShow"></cpn>
+  </div>
+  <template id="cpn">
+    <div>
+      哈哈
+    </div>
+  </template>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        isShow: true
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+          data() {
+            return {
+              isShow: true
+            }
+          }
+        }
+      }
+    })
+
+  </script>
+</body>
+
+</html>
