@@ -1,0 +1,51 @@
+<!--
+ * @Description: 
+ * @Autor: lihaiyuan
+ * @Email: lihaiyuan@goldenfintech.com.cn
+ * @Date: 2020-02-10 22:32:26
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Demo</title>
+  <script src="../../assets/vue.js">
+  </script>
+</head>
+
+<body>
+
+  <div id="app">
+    <button @click='btnclick'>点击</button>
+  </div>
+  <script>
+    
+      
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello'
+      },
+      methods:{
+        btnclick(){
+            //es6的简写
+            // const p = (n,m) =>{
+            //    return n * m;
+            // }
+            //如果返回中只有一行代码可以简写为
+            
+            const p = (n,m)=> n * m;
+            console.log(p(2,4));
+            
+        }
+
+      }
+    })
+
+  </script>
+</body>
+
+</html>

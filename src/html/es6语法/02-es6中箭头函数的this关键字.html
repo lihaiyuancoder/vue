@@ -1,0 +1,76 @@
+<!--
+ * @Description: 
+ * @Autor: lihaiyuan
+ * @Email: lihaiyuan@goldenfintech.com.cn
+ * @Date: 2020-02-10 22:42:26
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Demo</title>
+  <script src="../../assets/vue.js">
+  </script>
+</head>
+
+<body>
+
+  <div id="app">
+    <button @click="btnclick">点击</button>
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello'
+      },
+      methods: {
+        btnclick() {
+          //   console.log(123);
+          //es5写法
+          //   setTimeout(function () {
+          //     console.log(this);
+
+
+          //   }, 111);
+          //   //es6写法
+          //   setTimeout(() => {
+          //     console.log(this);
+
+          //   }, 100)
+
+          const a = {
+            aaa() {
+              setTimeout(function () {
+                console.log(this);
+
+              }, 100);
+            }
+
+          }
+
+        //   const a = {
+        //     aaa() {
+        //       setTimeout(() => {
+        //         console.log(this);
+        //       }, 100);
+        //     }
+        //   }
+        //箭头函数的this使用
+        // 向外层作用域中，一层层查找this,直到有this的定义
+        //结论 箭头函数的this引用的是最近作用域中的this，也就是obj的this
+        // function 回调，回调里面的作用域是window 
+          a.aaa()
+
+        }
+
+      }
+    })
+
+  </script>
+</body>
+
+</html>
